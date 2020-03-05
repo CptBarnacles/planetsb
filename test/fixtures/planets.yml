@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loc_rowid: 1
+  pl_name: MyString
+  pl_hostname: MyString
+  pl_orbital_period: 1.5
+  pl_orbital_eccentricity: 1.5
+  distance: 1.5
+  pl_mass: 1.5
+  pl_radius: 1.5
+  discovery_telescope: MyString
+  number_of_moons: 1
+  year_of_discovery: MyString
+  last_update: 2020-03-03
+
+two:
+  loc_rowid: 1
+  pl_name: MyString
+  pl_hostname: MyString
+  pl_orbital_period: 1.5
+  pl_orbital_eccentricity: 1.5
+  distance: 1.5
+  pl_mass: 1.5
+  pl_radius: 1.5
+  discovery_telescope: MyString
+  number_of_moons: 1
+  year_of_discovery: MyString
+  last_update: 2020-03-03

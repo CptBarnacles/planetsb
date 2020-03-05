@@ -1,0 +1,77 @@
+<%= form_with(model: planet, local: true) do |form| %>
+  <% if planet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(planet.errors.count, "error") %> prohibited this planet from being saved:</h2>
+
+      <ul>
+      <% planet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :loc_rowid %>
+    <%= form.number_field :loc_rowid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pl_name %>
+    <%= form.text_field :pl_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pl_hostname %>
+    <%= form.text_field :pl_hostname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pl_orbital_period %>
+    <%= form.text_field :pl_orbital_period %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pl_orbital_eccentricity %>
+    <%= form.text_field :pl_orbital_eccentricity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distance %>
+    <%= form.text_field :distance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pl_mass %>
+    <%= form.text_field :pl_mass %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pl_radius %>
+    <%= form.text_field :pl_radius %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discovery_telescope %>
+    <%= form.text_field :discovery_telescope %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_moons %>
+    <%= form.number_field :number_of_moons %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_of_discovery %>
+    <%= form.text_field :year_of_discovery %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_update %>
+    <%= form.date_select :last_update %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

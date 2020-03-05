@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Loc rowid:</strong>
+  <%= @planet.loc_rowid %>
+</p>
+
+<p>
+  <strong>Pl name:</strong>
+  <%= @planet.pl_name %>
+</p>
+
+<p>
+  <strong>Pl hostname:</strong>
+  <%= @planet.pl_hostname %>
+</p>
+
+<p>
+  <strong>Pl orbital period:</strong>
+  <%= @planet.pl_orbital_period %>
+</p>
+
+<p>
+  <strong>Pl orbital eccentricity:</strong>
+  <%= @planet.pl_orbital_eccentricity %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @planet.distance %>
+</p>
+
+<p>
+  <strong>Pl mass:</strong>
+  <%= @planet.pl_mass %>
+</p>
+
+<p>
+  <strong>Pl radius:</strong>
+  <%= @planet.pl_radius %>
+</p>
+
+<p>
+  <strong>Discovery telescope:</strong>
+  <%= @planet.discovery_telescope %>
+</p>
+
+<p>
+  <strong>Number of moons:</strong>
+  <%= @planet.number_of_moons %>
+</p>
+
+<p>
+  <strong>Year of discovery:</strong>
+  <%= @planet.year_of_discovery %>
+</p>
+
+<p>
+  <strong>Last update:</strong>
+  <%= @planet.last_update %>
+</p>
+
+<%= link_to 'Edit', edit_planet_path(@planet) %> |
+<%= link_to 'Back', planets_path %>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Planets</title>
+    <div>
+      <% if current_user %>
+      <%=link_to "Log out", logout_path, class: "btn btn-primary" %>
+      <% else %>
+      <%=link_to "Sign up / Log in", login_path, class: "btn btn-primary" %>
+      <% end %>
+
+      <% if current_user && current_user.admin %>
+      <%=link_to "Edit Users", users_path, class: "btn btn-primary" %>
+      <% else %>
+      <% end %>
+
+     </div>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  
+  <div class="container" style="width:1000px">
+    <body>
+      
+      <%= yield %>
+    </body>
+  </div>
+</html>

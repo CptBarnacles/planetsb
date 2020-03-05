@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Another Planet</h3>
+
+<%= form_tag(planets_path, method: :get) do %>
+<%= text_field_tag :term, params[:term] %>
+<%= submit_tag "Search", class: "btn btn-dark" %>
+<% end %>
+<br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Planet name</th>
+      <th>Planet host star</th>
+      <th>Orbital period</th>
+      <th>Distance (parsecs)</th>
+      <th>Discovery telescope</th>
+      <th>Year of discovery</th>
+      <th>Last update</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @planets.each do |planet| %>
+      <tr>
+        <td><%= planet.pl_name %></td>
+        <td><%= planet.pl_hostname %></td>
+        <td><%= planet.pl_orbital_period %></td>
+        <td><%= planet.distance %></td>
+        <td><%= planet.discovery_telescope %></td>
+        <td><%= planet.year_of_discovery %></td>
+        <td><%= planet.last_update %></td>
+        <td><%= link_to 'Show', planet %></td>
+        <% if current_user && current_user.admin %>
+        <td><%= link_to 'Edit', edit_planet_path(planet) %></td>
+        <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<!--- <%= paginate @planets unless !params[:term].blank? %> --->
