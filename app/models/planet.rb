@@ -1,11 +1,12 @@
 class Planet < ApplicationRecord
+  has_many :sponsors
 	paginates_per 10
 
   def self.search(term)
     if
       where('pl_name LIKE ?',"%#{term}%")
     else
-      first(15)
+      paginates_per(15)
     end
   end
 end

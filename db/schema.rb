@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_172516) do
+ActiveRecord::Schema.define(version: 2020_03_10_163106) do
 
   create_table "planets", force: :cascade do |t|
     t.integer "loc_rowid"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2020_03_05_172516) do
     t.date "last_update"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sponsors", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.integer "user_id"
+    t.integer "planet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["planet_id"], name: "index_sponsors_on_planet_id"
+    t.index ["user_id"], name: "index_sponsors_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

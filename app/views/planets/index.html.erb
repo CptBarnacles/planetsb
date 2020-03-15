@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Another Planet</h3>
-
-<%= form_tag(planets_path, method: :get) do %>
-<%= text_field_tag :term, params[:term] %>
-<%= submit_tag "Search", class: "btn btn-dark" %>
-<% end %>
+<div class="Search" style="margin: auto;padding: 30px;float:none">
+  <br>
+  <h2>Adopt a Planet</h2>
+  <%= form_tag(planets_path, method: :get) do %>
+  <%= text_field_tag :term %>
+  <%= submit_tag "Search", class: "btn btn-dark" %>
+  <% end %>
+</div>
 <br>
+
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -33,8 +36,8 @@
         <td><%= planet.last_update %></td>
         <td><%= link_to 'Show', planet %></td>
         <% if current_user && current_user.admin %>
-        <td><%= link_to 'Edit', edit_planet_path(planet) %></td>
-        <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_planet_path(planet) %></td>
+          <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -42,4 +45,3 @@
 </table>
 
 
-<!--- <%= paginate @planets unless !params[:term].blank? %> --->

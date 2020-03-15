@@ -1,14 +1,15 @@
 class PlanetsController < ApplicationController
-  before_action :logged_in?, only: [:index]
+  skip_before_action :logged_in?, only: [:index]
   before_action :set_planet, only: [:show, :edit, :update, :destroy]
 
   # GET /planets
   # GET /planets.json
   def index
-    if params[:term].blank?
-      @planets = Planet.order(:pl_name).page(params[:page])
+    @planets = if params[:term]
+      Planet.where('pl_name LIKE ?',"%#{params[:term]}%")
+
     else
-    @planets = Planet.search(params[:term])
+      Planet.first(10)
     end
   end
 

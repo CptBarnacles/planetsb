@@ -15,6 +15,12 @@ module SessionsHelper
    end
  end
 
+ def admin?
+ 	unless @current_user && @current_user.admin
+ 		redirect_to root_url, notice: "Unauthorized access"
+ 	end
+ end
+
  def log_out
    session.delete(:user_id)
    @current_user = nil

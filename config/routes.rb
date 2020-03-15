@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :sponsors
+  get 'sponsor', to: 'sponsors#index'
   get '/login', to:'sessions#new'
   post '/login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'

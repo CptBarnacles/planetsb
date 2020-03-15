@@ -1,64 +1,74 @@
 <p id="notice"><%= notice %></p>
+<body class="body">
+  
 
-<p>
-  <strong>Loc rowid:</strong>
-  <%= @planet.loc_rowid %>
-</p>
+  <p>
+    <strong>Planet name:</strong>
+    <%= @planet.pl_name %>
+  </p>
 
-<p>
-  <strong>Pl name:</strong>
-  <%= @planet.pl_name %>
-</p>
+  <p>
+    <strong>Planet Host Name:</strong>
+    <%= @planet.pl_hostname %>
+  </p>
 
-<p>
-  <strong>Pl hostname:</strong>
-  <%= @planet.pl_hostname %>
-</p>
+  <p>
+    <strong>Orbital period:</strong>
+    <%= @planet.pl_orbital_period %>
+  </p>
 
-<p>
-  <strong>Pl orbital period:</strong>
-  <%= @planet.pl_orbital_period %>
-</p>
+  <p>
+    <strong>Orbital eccentricity:</strong>
+    <%= @planet.pl_orbital_eccentricity %>
+  </p>
 
-<p>
-  <strong>Pl orbital eccentricity:</strong>
-  <%= @planet.pl_orbital_eccentricity %>
-</p>
+  <p>
+    <strong>Distance:</strong>
+    <%= @planet.distance %>
+  </p>
 
-<p>
-  <strong>Distance:</strong>
-  <%= @planet.distance %>
-</p>
+  <p>
+    <strong>Planet Mass:</strong>
+    <%= @planet.pl_mass %>
+  </p>
 
-<p>
-  <strong>Pl mass:</strong>
-  <%= @planet.pl_mass %>
-</p>
+  <p>
+    <strong>Planet Radius:</strong>
+    <%= @planet.pl_radius %>
+  </p>
 
-<p>
-  <strong>Pl radius:</strong>
-  <%= @planet.pl_radius %>
-</p>
+  <p>
+    <strong>Discovery telescope:</strong>
+    <%= @planet.discovery_telescope %>
+  </p>
 
-<p>
-  <strong>Discovery telescope:</strong>
-  <%= @planet.discovery_telescope %>
-</p>
+  <p>
+    <strong>Number of moons:</strong>
+    <%= @planet.number_of_moons %>
+  </p>
 
-<p>
-  <strong>Number of moons:</strong>
-  <%= @planet.number_of_moons %>
-</p>
+  <p>
+    <strong>Year of discovery:</strong>
+    <%= @planet.year_of_discovery %>
+  </p>
 
-<p>
-  <strong>Year of discovery:</strong>
-  <%= @planet.year_of_discovery %>
-</p>
+  <p>
+    <strong>Last update:</strong>
+    <%= @planet.last_update %>
+  </p>
 
-<p>
-  <strong>Last update:</strong>
-  <%= @planet.last_update %>
-</p>
 
-<%= link_to 'Edit', edit_planet_path(@planet) %> |
-<%= link_to 'Back', planets_path %>
+  <h2>Sponsors</h2>
+  <% @planet.sponsors.each do |spon|
+    @user = User.find(spon.user_id) %>
+  <p>
+    <%= @user.email %>
+  </p>
+
+  <% end %>
+
+
+
+  <p><%= link_to "Like this planet? Sponsor it now!", new_sponsor_path(:planet_id => @planet) %><p>
+  <%= link_to 'Back', planets_path %>
+</body>
