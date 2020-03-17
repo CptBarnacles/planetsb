@@ -1,36 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
-
-<table class="table table-striped table-dark">
-  <thead class="thead-dark">
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<% if current_user && current_user.admin %>
+  <table class="table table-striped table-dark">
+    <thead class="thead-dark">
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.password_digest %></td>
-        <td><%= link_to 'Show', user %></td>
-        <% if current_user && current_user.admin %>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-        <% end %>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.password_digest %></td>
+          <td><%= link_to 'Show', user %></td>
+          <% if current_user && current_user.admin %>
+          <td><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <% link_to 'Back', root_url %>
+<% end %>
 <br>
 
-<%= link_to 'New User', new_user_path %>
-
-<%= line_chart User.group(:created_at).count %>
+<%= link_to 'Create an account', new_user_path %>
+<br>
+<%= line_chart User.group_by_day(:created_at).count %>

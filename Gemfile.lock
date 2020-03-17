@@ -99,6 +99,8 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.0.0)
+      activesupport (>= 5)
     guard (2.16.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -309,6 +311,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   factory_bot
   faker
+  groupdate
   guard-rspec
   jbuilder (~> 2.5)
   jquery-rails

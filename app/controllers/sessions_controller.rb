@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :logged_in?
+  @nasa_info = NasaApi.get_api_info
   def new
   end
 

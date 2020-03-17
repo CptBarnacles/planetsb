@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'alphabetical_paginate'
 gem 'kaminari'
 gem 'chartkick'
+gem 'groupdate'
 gem 'rest-client'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

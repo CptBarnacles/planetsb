@@ -38,8 +38,8 @@
           <td><%= planet.last_update %></td>
           <td><%= link_to 'Show', planet, class: "btn btn-primary" %></td>
           <% if current_user && current_user.admin %>
-            <td><%= link_to 'Edit', edit_planet_path(planet) %></td>
-            <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_planet_path(planet), class: "btn btn-primary" %></td>
+            <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
           <% end %>
         </tr>
       <% end %>
