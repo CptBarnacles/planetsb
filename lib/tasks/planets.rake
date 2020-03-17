@@ -1,10 +1,13 @@
 require 'csv'
+require 'faker'
 namespace :planets do
   desc "return planet information from CSV"
   task seed_planets: :environment do
 
-    
+    Sponsor.destroy_all
     Planet.destroy_all
+    User.destroy_all
+    
 	
     CSV.foreach("lib/assets/planets_file.csv", :headers =>true) do |row |
       puts row[2].inspect 
@@ -25,6 +28,8 @@ namespace :planets do
       last_update: row[36].to_s
       )
     end
+
+    
 
 
   end

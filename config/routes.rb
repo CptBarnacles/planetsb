@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'nasa_api/index'
   resources :sponsors
   get 'sponsor', to: 'sponsors#index'
   get '/login', to:'sessions#new'

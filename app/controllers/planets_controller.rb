@@ -16,6 +16,7 @@ class PlanetsController < ApplicationController
   # GET /planets/1
   # GET /planets/1.json
   def show
+    @planets = Planet.where('pl_hostname LIKE?',"%#{params[:pl_hostname]}")
   end
 
   # GET /planets/new

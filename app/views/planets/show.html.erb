@@ -1,74 +1,82 @@
 <p id="notice"><%= notice %></p>
-<body class="body">
+<body class="body" style="position: relative;">
+  <strong><h3>The Planet <%= @planet.pl_name %> was discovered in <%= @planet.year_of_discovery %> with the <%= @planet.discovery_telescope %>
+  </h3></strong>
+  <br>
+  <ul class="list-group" style="max-width: 50%;float:left;padding-right: 25px">
+    <li class="list-group-item">
+      <strong>Planet name:</strong>
+      <%= @planet.pl_name %>
+    </li>
+
+    <li class="list-group-item">
+      <strong>Planet Host Name:</strong>
+      <%= @planet.pl_hostname %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Orbital period:</strong>
+      <%= @planet.pl_orbital_period %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Orbital eccentricity:</strong>
+      <%= @planet.pl_orbital_eccentricity %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Distance:</strong>
+      <%= @planet.distance %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Planet Mass:</strong>
+      <%= @planet.pl_mass %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Planet Radius:</strong>
+      <%= @planet.pl_radius %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Discovery telescope:</strong>
+      <%= @planet.discovery_telescope %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Number of moons:</strong>
+      <%= @planet.number_of_moons %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Year of discovery:</strong>
+      <%= @planet.year_of_discovery %>
+    </p>
+
+    <li class="list-group-item">
+      <strong>Last update:</strong>
+      <%= @planet.last_update %>
+    </p>
+      <p><%= link_to "Like this planet? Sponsor it now!", new_sponsor_path(:planet_id => @planet),  class: "btn-btn-primary" %><p>
+  <%= link_to 'Back', planets_path %>
+  </ul>
+
   
 
-  <p>
-    <strong>Planet name:</strong>
-    <%= @planet.pl_name %>
-  </p>
-
-  <p>
-    <strong>Planet Host Name:</strong>
-    <%= @planet.pl_hostname %>
-  </p>
-
-  <p>
-    <strong>Orbital period:</strong>
-    <%= @planet.pl_orbital_period %>
-  </p>
-
-  <p>
-    <strong>Orbital eccentricity:</strong>
-    <%= @planet.pl_orbital_eccentricity %>
-  </p>
-
-  <p>
-    <strong>Distance:</strong>
-    <%= @planet.distance %>
-  </p>
-
-  <p>
-    <strong>Planet Mass:</strong>
-    <%= @planet.pl_mass %>
-  </p>
-
-  <p>
-    <strong>Planet Radius:</strong>
-    <%= @planet.pl_radius %>
-  </p>
-
-  <p>
-    <strong>Discovery telescope:</strong>
-    <%= @planet.discovery_telescope %>
-  </p>
-
-  <p>
-    <strong>Number of moons:</strong>
-    <%= @planet.number_of_moons %>
-  </p>
-
-  <p>
-    <strong>Year of discovery:</strong>
-    <%= @planet.year_of_discovery %>
-  </p>
-
-  <p>
-    <strong>Last update:</strong>
-    <%= @planet.last_update %>
-  </p>
-
-
-  <h2>Sponsors</h2>
-  <% @planet.sponsors.each do |spon|
-    @user = User.find(spon.user_id) %>
-  <p>
-    <%= @user.email %>
-  </p>
-
-  <% end %>
+  <h2 style="padding-bottom: 25px;padding-left:350px;width:50%">Sponsors</h2>
+  <ul class="list-group">
+   <li class="list-group item list-group-item-primary" style="padding-bottom: 25px;width:50%">
+    <% @planet.sponsors.each do |spon|
+      @user = User.find(spon.user_id) %>
+    <%= spon.first_name %> <%= spon.last_name %>(<%= @user.email %>) <p>
+    <% end %> 
+    </li>
+  </ul>
 
 
 
-  <p><%= link_to "Like this planet? Sponsor it now!", new_sponsor_path(:planet_id => @planet) %><p>
-  <%= link_to 'Back', planets_path %>
+  <%= line_chart Planet.group(:year_of_discovery).count, xtitle: "Year of Discovery", ytitle: "Planets discovered" %>
+  <br>
+  
 </body>

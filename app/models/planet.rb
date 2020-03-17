@@ -4,7 +4,7 @@ class Planet < ApplicationRecord
 
   def self.search(term)
     if
-      where('pl_name LIKE ?',"%#{term}%")
+      where('pl_name || pl_hostname LIKE ?',"%#{term}%")
     else
       paginates_per(15)
     end

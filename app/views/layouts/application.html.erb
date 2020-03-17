@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
-<%= render :partial => 'layouts/menu' %>
   <head>
     <title>Home</title>
-    
+    <%= render :partial => 'layouts/menu' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
   </head>
 
 
-  <div class="container" style="width:1000px">
+  <div class="container" style="padding-top: 50px">
     <body>
-      
-      <%= yield %>
+    <% flash.each do |name, msg| %>
+        <div class='alert alert-<%= name %>'>
+          <%= msg %>
+          </div>
+    <% end %>   
+    <%= yield %>
+    
     </body>
   </div>
 </html>

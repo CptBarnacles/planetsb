@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
         redirect_to root_url
       else
         # Create an error message.
-       flash[:notice] = "Invalid email/password combination" # Not quite right!
-        render "new"
+        # Not quite right!
+        redirect_to login_path, danger: "Invalid email or password"
       end
     end
 
@@ -20,4 +20,5 @@ class SessionsController < ApplicationController
        log_out
        redirect_to root_url
   end
+
 end
