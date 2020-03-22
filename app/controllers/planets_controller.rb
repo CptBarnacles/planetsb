@@ -9,7 +9,7 @@ class PlanetsController < ApplicationController
       Planet.where('pl_name LIKE ?',"%#{params[:term]}%")
 
     else
-      Planet.first(10)
+      Planet.order(:last_update).first(5)
     end
   end
 

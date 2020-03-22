@@ -45,4 +45,5 @@
       <% end %>
     </tbody>
   </table>
+<%= bar_chart Planet.group_by_day_of_month(:last_update, format: "%a").count, xtitle: "Number of Planets Discovered" %>
 </body>

@@ -58,7 +58,7 @@
       <strong>Last update:</strong>
       <%= @planet.last_update %>
     </p>
-      <p><%= link_to "Like this planet? Sponsor it now!", new_sponsor_path(:planet_id => @planet),  class: "btn-btn-primary" %><p>
+      <p><%= link_to "Like this planet? Sponsor it now!", new_sponsor_path(planet_id: @planet.id),  class: "btn-btn-primary" %><p>
   <%= link_to 'Back', planets_path %>
   </ul>
 
@@ -73,10 +73,6 @@
     <% end %> 
     </li>
   </ul>
-
-
-
-  <%= line_chart Planet.group(:year_of_discovery).count, xtitle: "Year of Discovery", ytitle: "Planets discovered" %>
   <br>
   
 </body>
