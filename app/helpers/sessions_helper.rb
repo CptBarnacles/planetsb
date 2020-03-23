@@ -11,7 +11,7 @@ module SessionsHelper
  def logged_in?
    #!current_user.nil?
     unless User.find_by(id: session[:user_id])
-     redirect_to login_url, info:"Please log in"
+     redirect_to root_url, info:"Please log in"
    end
  end
 
