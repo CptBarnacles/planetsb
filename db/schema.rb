@@ -10,7 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_163106) do
+ActiveRecord::Schema.define(version: 2020_03_23_124707) do
+
+  create_table "baskets", force: :cascade do |t|
+    t.integer "planet_id"
+    t.decimal "price"
+    t.integer "user_id"
+    t.integer "sponsor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["planet_id"], name: "index_baskets_on_planet_id"
+    t.index ["sponsor_id"], name: "index_baskets_on_sponsor_id"
+    t.index ["user_id"], name: "index_baskets_on_user_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.string "donation"
+    t.integer "sponsor_id"
+    t.integer "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "amount"
+    t.index ["amount"], name: "index_line_items_on_amount"
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["sponsor_id"], name: "index_line_items_on_sponsor_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
 
   create_table "planets", force: :cascade do |t|
     t.integer "loc_rowid"

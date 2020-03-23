@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
+  resources :orders
   get 'nasa_api/index'
   resources :sponsors
   get 'sponsor', to: 'sponsors#index'
