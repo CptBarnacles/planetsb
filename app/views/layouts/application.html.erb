@@ -2,7 +2,37 @@
 <html>
   <head>
     <title>Home</title>
-    <%= render :partial => 'layouts/menu' %>
+    <head>
+   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <ul class="navbar-nav"  style="width: 70%;float:left">
+      <a class="navbar-brand text-secondary">
+       <%=link_to 'Distant Planets', planets_path, class: "btn btn-dark" %>
+        </a> 
+      <%=link_to 'Nasa APOD', nasa_api_index_path, class: "btn btn-dark" %>
+      <!--- Here we set up optional links for admins and none admins using the session helpers--->
+        <% if current_user && current_user.admin %>
+          <td><%=link_to "Edit Users", users_path, class: "btn btn-dark" %>
+          <td><%= link_to 'Edit Sponsors', sponsors_path(user_id: current_user.id), class: "btn btn-dark"%></td>
+      <% end %>
+    </ul>
+    <ul class="navbar-nav text-info" style="width: 30%;float:right">
+      <li>
+      <% if current_user && !current_user.admin %>
+        <%= current_user.name %>
+        <%=link_to "My Planets", sponsors_path(user_id: current_user.id), class: "btn btn-dark" %>
+        <%=link_to "Log out", logout_path, class: "btn btn-dark" %>
+        <%=link_to "Basket", line_items_path, class: "btn btn-dark" %> (<%= current_user.sponsors.count %>)
+        </div>
+      <% elsif current_user && current_user.admin %>
+        <%=link_to "Log out", logout_path, class: "btn btn-dark" %>
+      <% end %>
+      <% if current_user.nil? %>
+        <%=link_to "Sign up / Log in", login_path, class: "btn btn-dark" %>
+      <% end %>
+      </li>
+    </ul>
+   </nav>
+</head>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
