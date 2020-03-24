@@ -1,15 +1,13 @@
-require 'csv'
 require 'faker'
-namespace :planets do
-  desc "return planet information from CSV"
-  task seed_planets: :environment do
+require 'csv'
+namespace :users do
+  desc "Produce users"
+  task seed_users: :environment do
+     User.destroy_all
+     Sponsor.destroy_all
+     Planet.destroy_all
 
-    Sponsor.destroy_all
-    Planet.destroy_all
-    User.destroy_all
-    
-	
-    CSV.foreach("lib/assets/planets_file.csv", :headers =>true) do |row |
+     CSV.foreach("lib/assets/planets_file.csv", :headers =>true) do |row |
       puts row[2].inspect 
 
       #create new model from the csv 
@@ -29,13 +27,37 @@ namespace :planets do
       )
     end
 
+     p "Users removed"
+        10.times do | index |
+          User.create!(
+           name: Faker::Name::name,
+           email: Faker::Internet::email,
+           password: "password",
+           admin: false
+           )     
+        end
     
+     p "Regular Users Added"
+     User.create!(
+      name: "admin",
+      email: "admin@administrator.com",
+      password: "password",
+      admin: true
+      )   
+    p "Admin added"
 
+     users = User.all
+     planets = Planet.all
 
+     500.times do |index|
+       sponsor = Sponsor.new(
+         first_name: Faker::Name::name,
+         last_name: Faker::Name.last_name,
+         planet_id: planets.sample.id,
+         user_id: users.sample.id
+        )
+       sponsor.save
+      end
+     p "Sponsors generated"
   end
 end
-
-#:loc_rowid, :pl_name, :pl_hostname, :pl_orbital_period, 
-#:pl_orbital_eccentricity, :distance, :pl_mass, :pl_radius, 
-#:discovery_telescope, :number_of_moons, :year_of_discovery, :last_update
-
