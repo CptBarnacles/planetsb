@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-<h3> Enter your details to create your free User account: </h3>
+<% if current_user && !current_user.admin %>  
+  <h3> Enter your details to create your free User account: </h3>
+<% end %>
 <div class="form-group" style="max-width: 40%">
   <form>
     <div class="field">
