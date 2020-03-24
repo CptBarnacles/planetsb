@@ -36,10 +36,10 @@
           <td><%= planet.discovery_telescope %></td>
           <td><%= planet.year_of_discovery %></td>
           <td><%= planet.last_update %></td>
-          <td><%= link_to 'Show', planet, class: "btn btn-primary" %></td>
+          <td><%= link_to 'Show', planet, class: "btn btn-light" %></td>
           <% if current_user && current_user.admin %>
-            <td><%= link_to 'Edit', edit_planet_path(planet), class: "btn btn-primary" %></td>
-            <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+            <td><%= link_to 'Edit', edit_planet_path(planet), class: "btn btn-light" %></td>
+            <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-light" %></td>
           <% end %>
         </tr>
       <% end %>
