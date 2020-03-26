@@ -1,0 +1,43 @@
+<%= form_with(model: sponsor, local: true) do |form| %>
+  <% if sponsor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
+
+      <ul>
+      <% sponsor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<br>
+<form>
+    <div class="field">
+     <%= form.hidden_field :planet_id, :value => @planet.id %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: "form-control" %>
+    </div>
+  <br>
+    <div class="field">
+      <%= form.hidden_field :user_id, :value => current_user.id %>
+    </div>
+    
+  <br>
+
+    <div class="actions">
+      <%= form.submit "Sponsor", class: "btn btn-dark" %>
+    </div>
+  <% end %>
+
+</form>
+

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Donation:</strong>
+  <%= @line_item.donation %>
+</p>
+
+<p>
+  <strong>Sponsor:</strong>
+  <%= @line_item.sponsor %>
+</p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @line_item.cart %>
+</p>
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %>

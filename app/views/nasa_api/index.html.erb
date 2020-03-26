@@ -1,0 +1,15 @@
+<h2 style=""> NASA Astronomy Picture of the Day</h2>
+<div class="container" style="height: 100%">
+	<div class="title">
+		<h1><%= @nasa_info["title"] %>
+		</h1>
+	</div>
+	<p class="lead" style=""><%= @nasa_info["explanation"] %></p>
+	<br>
+	<img src="<%= @nasa_info["url"] %>" style="margin:0px;text-align:center;max-height: 500px;max-width: 500px;"/>
+	
+	<p><%= @nasa_info["date"] %></p>
+
+</div>
+
+

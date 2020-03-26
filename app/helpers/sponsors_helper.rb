@@ -1,0 +1,4 @@
+module SponsorsHelper
+
+
+end

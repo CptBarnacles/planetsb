@@ -1,0 +1,28 @@
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th>Last name</th>
+        <th>User</th>
+        <th>Planet</th>
+        <th>Sponsored On</th>
+        <th>View</th>
+        <th>Purchase</th>
+        <th>Remove</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% current_user.sponsors.each do |sponsor| %>
+        <tr>
+          <td><%= sponsor.last_name %></td>
+          <td><%= sponsor.user.name %></td>
+          <td><%= sponsor.planet_id %></td>
+          <td><%= sponsor.created_at %></td>
+          <td><%= link_to 'Details', sponsor %></td>
+          <td><%= link_to 'Add to basket', new_line_item_path(sponsor_id: sponsor.id) %></td>
+          <td><%= link_to 'Remove Sponsor', sponsor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
