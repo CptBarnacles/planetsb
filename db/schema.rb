@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_124707) do
+ActiveRecord::Schema.define(version: 2020_04_05_121701) do
 
   create_table "baskets", force: :cascade do |t|
     t.integer "planet_id"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_124707) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.string "bio", default: "Write something about yourself!", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

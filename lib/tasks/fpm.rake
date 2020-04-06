@@ -4,7 +4,7 @@ namespace :fpm do
   desc "TODO"
   task put_tables: :environment do
 
-  	 Sponsor.destroy_all
+     Sponsor.destroy_all
      User.destroy_all
      Planet.destroy_all
 
@@ -46,6 +46,14 @@ namespace :fpm do
       admin: true
       )   
     p "Admin added"
+
+    User.create!(
+      name: "example",
+      email: "example@example.com",
+      password: "example123",
+      admin: false
+      )   
+    p "Guest added"
 
      users = User.all
      planets = Planet.all
